@@ -103,16 +103,19 @@ whileloop:
         switch(extensionHash(extension)) 
         {
           case PNG_FILE:{
-              //write(clisock, pngHeader, sizeof(pngHeader)-1);
+              write(clisock, pngHeader, sizeof(pngHeader)-1);
 
             //bool sendFileOverSocket(int fd, FILE* socket, char* formatHeader) {
-            sendFileOverSocket(requestedFD, clisock, pngHeader);
             printf("PNG file requested\n");
+            sendFileOverSocket(requestedFD, clisock, pngHeader);
+            
             break;
           }
           default:{}
         }
-      } else {
+      } 
+      else 
+      {
         write(clisock, htmlHeader, sizeof(htmlHeader)-1);
       }
 

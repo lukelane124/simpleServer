@@ -42,9 +42,20 @@ bool sendFileOverSocket(int fd, int socket, const char* formatHeader) {
   int sentBytes = 0;
   long int offset = 0;
   int remainData = st.st_size;
-  while(((sentBytes = sendfile(socket, fd, &offset, remainData)) > 0 && (remainData -= sentBytes) > 0)) {
-    printf("Server sent %d bytes from the file, offset is now: %d, and, %d remains to be sent.\n", sentBytes, offset, remainData);
+  //write(fd, responseHeader, strlen(responseHeader) - 1);
+  for(;;)
+  {
+  	sentBytes = sendfile(socket, fd, &offset, remainData);
+  	remainData -= sentBytes;
+  	printf("Server sent %d bytes from the file, offset now: %d, and %d remains to be send.\n", sentBytes, offset, remainData);
+  	if (sentBytes <= 0 || remainData <= 0)
+  		{
+  			break;
+  		}
   }
+  // while(((sentBytes = sendfile(socket, fd, &offset, remainData)) > 0 && (remainData -= sentBytes) > 0)) {
+  //   printf("Server sent %d bytes from the file, offset is now: %d, and, %d remains to be sent.\n", sentBytes, offset, remainData);
+  // }
  return true; 
 }
 
