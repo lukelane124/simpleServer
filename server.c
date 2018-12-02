@@ -13,23 +13,17 @@
 #include <stdbool.h>
 #include <sys/sendfile.h>
 #include <sys/stat.h>
+#include "server.h"
 //TODO: malloc ifdef for large URL buffers needs. 
 //		Remove mallocs in _normal_ code.
+
+
+
+#define PORT 5555
+#define MAX_BUFFER_SIZE 1024
 const char webroot[] =
 "./files/";
 
-const char webpage[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>%s</title></head><body>%s</body></html>\r\n\r\n\0";
-const char timepage[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>Default</title></head><body><h1>This is the default file for Tommy's Server 0.0.1</h1><br><h2>%s</h2></body></html>\r\n\r\n\0";
-const char fofPage[] =
-"HTTP/1.1 404 Not Found\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>404 Not Found</title></head><body><h1>Error 404</h1><br>File not found. Closing connection</body></html>\r\n\r\n\0";
-const char htmlHeader[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; \r\n\r\n";
-const char pngHeader[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: image/png\r\nContent-Length: %i\r\n\r\n";
-const char textHeader[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text; \r\n\r\n";
 
 typedef enum rest_e
 {
@@ -56,8 +50,9 @@ bool sendFileOverSocket(int fd, int socket, const char* formatHeader) {
 
 
 
-int8_t detrmineRESTtype(char* string)
+int8_t detrmineRESTtype(client_request_t cliReq)
 {
+	char* string = cliReq.header;
 	//NO modification of string!!! going to reuse later!!!
 	uint8_t ret = -1;
 	switch(string[0])
@@ -84,59 +79,66 @@ int8_t detrmineRESTtype(char* string)
 	return ret;
 }
 
-
+//Handles a newly created thread which takes a void* = fd of new client socket.
 void* connectHandler(void* args) {
-  int clisock = *((int*) args);
+  // Cast to int for converstion to socket number.
+  client_request_t cliRequest;
+  cliRequest.clientSocket = *((int*) args);
+  int clisock = cliRequest.clientSocket;
+  //Generate a new buffer to hold the message from the client.
   size_t r_msg_size = MAX_BUFFER_SIZE;
   char* r_msg = (char *) malloc(r_msg_size*sizeof(char));
+  //INitialize to invalid data for error detection.
   int bytesRead = -5;
-  bool cont = true;
+  //Variable for tracking state of server, should I further process incoming, unused data.
   int returnZeroCount = 0;
-  whileloop:
-  while(cont) 
-  {
     printf("New Request:\n\n");
+    // error detection
     int filetype = -1;
+    //Read in up to r_msg_size bytes from socket connection.
     bytesRead = read(clisock, r_msg, r_msg_size);
+    //If lt 0 error encountered.
     if (bytesRead < 0) {
       printf("Error reading from socket.\n");
+      //Need to free message pointer so that we don't leek.
       free(r_msg);
+      //It's borken, leave.
       pthread_exit(NULL);
     } else if(bytesRead == 0) {
-      if (returnZeroCount > 20) 
-        cont = false;
-      sleep(.3);   
-      returnZeroCount++;
-      continue;
+      //No new data to read from socket, move on.
     } else if(bytesRead < r_msg_size) {
+      //Header processed move on.
       printf("%s\n", r_msg);
     } else {
+      //Header is too long, if this becomes a problem increase read size, or reimplement to process with realloc.
       printf("Header toooo long, failed with too large an input.\n");
-      exit(-3);
+      //Cleanup heap memory.
+      free(r_msg);
+      pthread_exit(NULL);
     }
-    switch(detrmineRESTtype(r_msg))
+
+    cliRequest.header = r_msg;
+
+    //What kind of header did we get?
+    switch(detrmineRESTtype(cliRequest))
     {
     	case GET:
-    		handlerGETRequest(r_msg);
+    		handlerGETRequest(cliRequest);
 			break;
 
 		case POST:
-			handlerPOSTRequest(r_msg);
+			handlerPOSTRequest(cliRequest);
 			break;
 
 		case PUT:
-			handlerPUTRequest(r_msg);
+			handlerPUTRequest(cliRequest);
 			break;
 
 		case DELETE:
-			handlerDELETERequest(r_msg);
+			handlerDELETERequest(cliRequest);
 			break;
-
-    }
-   
-
   }
-  end:
+  //Cleanup memory, close socket, throw out thread's context.
   free(r_msg);
   close(clisock);
   pthread_exit(NULL);
@@ -150,29 +152,42 @@ void* connectHandler(void* args) {
 
 
 
-void handleConnect(int clisock) {
-  
+void handleConnect(int clisock) 
+{
+  //New thread attribute for configuration  
   pthread_attr_t attribs;
+  //new thread struct for declaring behavior
   pthread_t thread;
+  //Init the thread attributes.
   pthread_attr_init(&attribs);
+  //Set state so that when the thread terminates It's state and return variables are discarded
   pthread_attr_setdetachstate(&attribs, PTHREAD_CREATE_DETACHED);
+  //Actuall create the thread.
   pthread_create(&thread, &attribs, connectHandler, (void*)&clisock);   
 } 
 
 
 int main(int argc, char* argv[]) {
+  //ints to represent: socket file discriptor, new sockets generated by the OS on a request to the listening socket,
+	//length of new cli socket, PID for process for easy debug lookup.
   int sockfd, newsockfd, clilen;
+  int PID = getpid();
+  //Structs to hold socket information for the client and server addresses.
   struct sockaddr_in cli_addr, serv_addr;
+  //print PID for debug attach.
+  printf("\nPID: %d\n", PID);
+  //Request a new uninitialized socket from OS, if error H&CF.
   if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) { 
     printf("There was an error getting a sockfd from the OS.");
     exit(-1);
   }
+  //set server address to null.
   memset((void *) &serv_addr, 0, sizeof(serv_addr));
   printf("argc: %i\n", argc);
   serv_addr.sin_family = AF_INET;                 //Set address family(ipv4)
   serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);  //Set address header for any incomming address.
 
-  short int port;
+  short int port;								  //Used for listing connected socket on cli.
   if (argc > 1) {
     port = atoi(argv[1]);
     serv_addr.sin_port = htons(port);
@@ -192,7 +207,7 @@ int main(int argc, char* argv[]) {
   //Tell OS we would like to start listening on this socket, we're not going to create a connection to a specific address.
   //  We want to keep this open so that we can be available for anyone who wants to talk.
   //Second param is "backlog" of connections the OS will pool for us.
-  listen(sockfd, 10);
+  listen(sockfd, 256);
 
   for (;;) {  //Forever
     //How big is the header for internet address.
@@ -203,7 +218,10 @@ int main(int argc, char* argv[]) {
     if (newsockfd < 0) { 
       printf("Error accepting new client.");
       //exit(-1);
+      break;
     }
+    //Generate a new thread to handle incoming data.
     handleConnect(newsockfd);
   }
+  printf("Exited from main for some reason...\n");
 }

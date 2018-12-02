@@ -1,0 +1,2682 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>WorldCiv</title>
+<!-- 2018-03-15 Thu 13:35 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Tommy Lane" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+.figure p { text-align: left; }
+/*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">WorldCiv</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#history-1310-science-and-technology-in-world-civilization">1. History 1310 - Science and Technology in World Civilization</a>
+<ul>
+<li><a href="#sec-1-1">1.1. Questions? :email: edriggers@tntech.edu <b>Office Hours</b>:</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Lecture 1 - What is the meaning of Science?</a>
+<ul>
+<li><a href="#sec-2-1">2.1. What do I mean by Values???</a></li>
+<li><a href="#sec-2-2">2.2. Traditional Conception of Scientific Investigation</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1. Nazi Medical Experimentation and the body</a></li>
+<li><a href="#sec-2-2-2">2.2.2. Drug Testing and Children</a></li>
+<li><a href="#sec-2-2-3">2.2.3. Conception and understanding of life</a></li>
+<li><a href="#sec-2-2-4">2.2.4. Interventions in the environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Lecture 2 - Babylon and beyond</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Orientation:</a></li>
+<li><a href="#sec-3-2">3.2. <span class="todo TODO">TODO</span> Theoretical Point: <i>Verify quotes&#x2026;</i></a></li>
+<li><a href="#sec-3-3">3.3. Geographic location:</a></li>
+<li><a href="#sec-3-4">3.4. Home to diverse groups of people</a></li>
+<li><a href="#sec-3-5">3.5. Hammurabi and his Code</a></li>
+<li><a href="#sec-3-6">3.6. Timeline</a></li>
+<li><a href="#sec-3-7">3.7. Literature: <i>The Epic of Gilgamesh</i></a></li>
+<li><a href="#sec-3-8">3.8. Technological Achievement</a>
+<ul>
+<li><a href="#sec-3-8-1">3.8.1. Walls of Babylon <i>Part of <b>Seven Wonder</b></i></a></li>
+<li><a href="#sec-3-8-2">3.8.2. <span class="todo TODO">TODO</span> Archimedes Screw: Verify location of possible garden's location with Driggers.</a></li>
+<li><a href="#sec-3-8-3">3.8.3. Assyrian Pottery</a></li>
+<li><a href="#sec-3-8-4">3.8.4. Astronomy - Wrote down observations</a></li>
+<li><a href="#sec-3-8-5">3.8.5. Mathematics</a></li>
+<li><a href="#sec-3-8-6">3.8.6. Medicine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Lecture 3 Ancient Egypt: Finish updating this info.</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Objectives</a></li>
+<li><a href="#sec-4-2">4.2. Opening Vignette </a></li>
+<li><a href="#sec-4-3">4.3. Thinking about time</a>
+<ul>
+<li><a href="#sec-4-3-1">4.3.1. Gregorian Calendar</a></li>
+<li><a href="#sec-4-3-2">4.3.2. Religious Traditions and Time</a></li>
+<li><a href="#sec-4-3-3">4.3.3. Egyptian Calendar</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-4">4.4. Continuation of discussion from earlier </a></li>
+<li><a href="#sec-4-5">4.5. Background of Ancient Egypt</a>
+<ul>
+<li><a href="#sec-4-5-1">4.5.1. The Nile river (The Life line of egypt)</a></li>
+<li><a href="#sec-4-5-2">4.5.2. Advanced Plant knowledge</a></li>
+<li><a href="#sec-4-5-3">4.5.3. Agricultieral Success</a></li>
+</ul>
+</li>
+<li><a href="#sec-4-6">4.6. Egyptians at Sea</a></li>
+<li><a href="#sec-4-7">4.7. Egyptain Civilization and Society (Organization)</a></li>
+<li><a href="#sec-4-8">4.8. Pharaoh</a>
+<ul>
+<li><a href="#sec-4-8-1">4.8.1. Religion (Ra)</a></li>
+<li><a href="#sec-4-8-2">4.8.2. Religious tradition "the book of the dead"</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-5">5. <span class="todo TODO">TODO</span> Lecture 4</a></li>
+<li><a href="#sec-6">6. <span class="todo TODO">TODO</span> Lecture 5</a></li>
+<li><a href="#sec-7">7. <span class="todo TODO">TODO</span> Lecture 6 - Europe in the Middle Ages; Natural Philosophy: Remind driggers about quadrium</a>
+<ul>
+<li><a href="#sec-7-1">7.1. middle ages</a></li>
+<li><a href="#sec-7-2">7.2. Introduction</a></li>
+<li><a href="#sec-7-3">7.3. Timeline</a></li>
+<li><a href="#sec-7-4">7.4. Medieval Times</a>
+<ul>
+<li><a href="#sec-7-4-1">7.4.1. Zombie Apocalypse</a></li>
+<li><a href="#sec-7-4-2">7.4.2. Feudalism</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-5">7.5. Scholarly life</a>
+<ul>
+<li><a href="#sec-7-5-1">7.5.1. Roger bacon</a></li>
+<li><a href="#sec-7-5-2">7.5.2. William of Ockham - Ockham's razor.</a></li>
+<li><a href="#sec-7-5-3">7.5.3. Albert Magnus <i>Albert the great</i></a></li>
+<li><a href="#sec-7-5-4">7.5.4. Hildegard of Bingen Nun</a></li>
+<li><a href="#sec-7-5-5">7.5.5. Cristine Depuzon?</a></li>
+<li><a href="#sec-7-5-6">7.5.6. Thomas Aquinas</a></li>
+</ul>
+</li>
+<li><a href="#sec-7-6">7.6. Medieval engineering</a></li>
+<li><a href="#sec-7-7">7.7. Music</a></li>
+<li><a href="#sec-7-8">7.8. Medieval medicine</a>
+<ul>
+<li><a href="#sec-7-8-1">7.8.1. Old theory</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-8">8. <span class="todo TODO">TODO</span> Lecture 7 - test bank, Golden age of Islamic philosophy: email driggers about magic early Tuesday morning.</a>
+<ul>
+<li><a href="#sec-8-1">8.1. What to expect on test.</a></li>
+<li><a href="#sec-8-2">8.2. Outline</a></li>
+<li><a href="#sec-8-3">8.3. Contextualizing Historical Terms</a></li>
+<li><a href="#sec-8-4">8.4. Islamic era maps 1</a></li>
+<li><a href="#sec-8-5">8.5. Islamic era map 2</a></li>
+<li><a href="#sec-8-6">8.6. Scientific terms</a></li>
+<li><a href="#sec-8-7">8.7. Cities of golden age</a></li>
+<li><a href="#sec-8-8">8.8. Hydraulic Tech - The qanat</a></li>
+<li><a href="#sec-8-9">8.9. Transmission of tech</a></li>
+<li><a href="#sec-8-10">8.10. Houses of wisdom</a></li>
+<li><a href="#sec-8-11">8.11. Hunaynn ibn Ishaq (Latin Iohannities) <code>you/yoo knight us</code></a></li>
+<li><a href="#sec-8-12">8.12. Avicenna - Ibin Sinda</a>
+<ul>
+<li><a href="#sec-8-12-1">8.12.1. Book of healing</a></li>
+<li><a href="#sec-8-12-2">8.12.2. Canon of medicine</a></li>
+</ul>
+</li>
+<li><a href="#sec-8-13">8.13. Medicine/Biology and Images 2</a></li>
+<li><a href="#sec-8-14">8.14. </a></li>
+<li><a href="#sec-8-15">8.15. Mosque</a></li>
+<li><a href="#sec-8-16">8.16. observatories</a></li>
+<li><a href="#sec-8-17">8.17. Midrasas? - law centers</a></li>
+<li><a href="#sec-8-18">8.18. <span class="todo TODO">TODO</span> Hospitals: The medieval Islamic hospital <code>in lib</code></a></li>
+<li><a href="#sec-8-19">8.19. Toledo, Spain</a></li>
+<li><a href="#sec-8-20">8.20. Byzantine empire - Byzantium 2</a></li>
+<li><a href="#sec-8-21">8.21. Crusades have huge affects, we don't really get into it&#x2026;..yet.</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">9. Lecture 8 - Magic; Medieval &amp; Rennnaissance Cathedrals</a>
+<ul>
+<li><a href="#sec-9-1">9.1. Guiding poitns</a></li>
+<li><a href="#sec-9-2">9.2. Byzantium</a>
+<ul>
+<li><a href="#sec-9-2-1">9.2.1. Pendentives Curvature under the dome, support columns</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-3">9.3. Cathedrals</a>
+<ul>
+<li><a href="#sec-9-3-1">9.3.1. Masons</a></li>
+<li><a href="#sec-9-3-2">9.3.2. Neo-Gothic movement in America</a></li>
+<li><a href="#sec-9-3-3">9.3.3. Flying Bittress</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-4">9.4. Education "in" the cathedral school</a></li>
+<li><a href="#sec-9-5">9.5. David</a></li>
+<li><a href="#sec-9-6">9.6. Art comveys Emition//Religion as Art</a>
+<ul>
+<li><a href="#sec-9-6-1">9.6.1. Case study 1 - Filippo Brunelleschi (1377-1446)</a></li>
+</ul>
+</li>
+<li><a href="#sec-9-7">9.7. Video gGames as Tools//Historical Interpretation</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">10. Lecture 9 - Revolutions in Science (Part 1): Copernicus</a>
+<ul>
+<li><a href="#sec-10-1">10.1. Death bed of copernicus - 1543</a></li>
+<li><a href="#sec-10-2">10.2. Thomas Kuhn 1</a></li>
+<li><a href="#sec-10-3">10.3. Thomas Kuhn 2</a>
+<ul>
+<li><a href="#sec-10-3-1">10.3.1. <span class="todo TODO">TODO</span> determine if "inner circles" were to correct for thoughts of perfect circular orbits.</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-4">10.4. Tycho Brahe 1</a>
+<ul>
+<li><a href="#sec-10-4-1">10.4.1. Sister Sophia Bahe</a></li>
+<li><a href="#sec-10-4-2">10.4.2. Astronomer</a></li>
+</ul>
+</li>
+<li><a href="#sec-10-5">10.5. Kepler; see previous</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">11. Lecture 10 - Galileo's Struggle and Triumphs; Magic is test corrections</a>
+<ul>
+<li><a href="#sec-11-1">11.1. Galileo and Music</a></li>
+<li><a href="#sec-11-2">11.2. Framing questions</a></li>
+<li><a href="#sec-11-3">11.3. Galileo (1562-1642)</a>
+<ul>
+<li><a href="#sec-11-3-1">11.3.1. Profs in this time weren't allowed to marry.</a></li>
+</ul>
+</li>
+<li><a href="#sec-11-4">11.4. Virginia Galilei/Maria Celeste</a></li>
+<li><a href="#sec-11-5">11.5. Galileo has a problem with authority&#x2026;</a></li>
+<li><a href="#sec-11-6">11.6. Case Study: Galileo</a></li>
+<li><a href="#sec-11-7">11.7. Starry messenger</a></li>
+<li><a href="#sec-11-8">11.8. Galileo and his world</a></li>
+<li><a href="#sec-11-9">11.9. Court life</a></li>
+<li><a href="#sec-11-10">11.10. Grand duchess Chirstina GD of Tuscany (1565-1637)</a></li>
+<li><a href="#sec-11-11">11.11. Galileo and Heliocentric Theory</a></li>
+<li><a href="#sec-11-12">11.12. New Pope -&gt; Urban VIII</a></li>
+<li><a href="#sec-11-13">11.13. Galileo's other book "Dialogue of the Two Chief World Systems" (1632)</a></li>
+<li><a href="#sec-11-14">11.14. outside of the galileo case study</a></li>
+<li><a href="#sec-11-15">11.15. Other revolutions of Sorts</a>
+<ul>
+<li><a href="#sec-11-15-1">11.15.1. William Harvery (1578-1657)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-12">12. LEcture 11? - Was the scientific Rev neither scientif or reolutionary? - Case study NEwton</a>
+<ul>
+<li><a href="#sec-12-1">12.1. Framing questions</a></li>
+<li><a href="#sec-12-2">12.2. a little review</a></li>
+<li><a href="#sec-12-3">12.3. Coernicus to Newton</a></li>
+<li><a href="#sec-12-4">12.4. Isaac Newrton (1642-1727)</a></li>
+<li><a href="#sec-12-5">12.5. <span class="todo TODO">TODO</span> INtro to Isaac Newton; get copy of Driggers manuscript</a></li>
+<li><a href="#sec-12-6">12.6. Miracle year</a></li>
+<li><a href="#sec-12-7">12.7. Scientific Controversies</a></li>
+<li><a href="#sec-12-8">12.8. Return to Cambridge 1667</a></li>
+<li><a href="#sec-12-9">12.9. New Questions</a></li>
+<li><a href="#sec-12-10">12.10. The Principia 'pren kip e ah'</a></li>
+</ul>
+</li>
+<li><a href="#sec-13">13. Lecture ? - Voyages of Discovery</a>
+<ul>
+<li><a href="#sec-13-1">13.1. Guiding Questions</a></li>
+<li><a href="#sec-13-2">13.2. Frankenstein</a></li>
+<li><a href="#sec-13-3">13.3. Scramble for atlantic</a></li>
+<li><a href="#sec-13-4">13.4. Three G's /gold, glory, god</a></li>
+<li><a href="#sec-13-5">13.5. Hugano diaspera</a></li>
+<li><a href="#sec-13-6">13.6. Bartram trail</a></li>
+<li><a href="#sec-13-7">13.7. Charles Darwin</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-history-1310---science-and-technology-in-world-civilization" class="outline-2">
+<h2 id="history-1310---science-and-technology-in-world-civilization"><a id="sec-1" name="sec-1"></a><span class="section-number-2">1</span> History 1310 - Science and Technology in World Civilization</h2>
+<div class="outline-text-2" id="text-history-1310---science-and-technology-in-world-civilization">
+
+<p>
+Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-01-18 Thu&gt;</span></span> Lecturer: Driggers
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Questions? :email: edriggers@tntech.edu <b>Office Hours</b>:</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+T-Th: 4:30-6
+What are office hours for? 
+</p>
+<ul class="org-ul">
+<li>Problems reading and retaining information from lecture or textbook. 
+</li>
+
+<li>Questions about grades, performance, participation, attendance, Etc 
+</li>
+
+<li>Go over a test or paper
+</li>
+
+<li>Recommendations about improvement 
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Lecture 1 - What is the meaning of Science?</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>Whare is the use of science? 
+</li>
+
+<li>Are there ways that science can be improperly? 
+</li>
+
+<li>Is science value free?
+</li>
+
+<li>How do non-epistimic values figure into scientific investigations? 
+</li>
+
+<li>What are the role of
+</li>
+
+<li>contextual values in science? 
+</li>
+
+<li>Whose values will impact scientific work? 
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> What do I mean by Values???</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>Epistimic-Traditionally means values in the internal processes of science? 
+Like measurement, quantification, ?Testable?
+</li>
+
+<li>Non-Epistimic-Means those not in the internal process, often effecting the conceptualization of questions and interpretation of ?data,? things like experiences, psychological worries, political values, ideas about race, gender &amp;c.
+</li>
+
+<li>Objectivity is a changing standard throughout history!
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Traditional Conception of Scientific Investigation</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Scientists:
+
+<ul class="org-ul">
+<li>Observe phenomena, Measure it, and Understand and make products; control phenomena; offer recommendations 
+</li>
+</ul>
+</li>
+
+<li>Who are scientists? 
+</li>
+
+<li>What is deemed phenomena? 
+</li>
+
+<li>What counts as proper measurement? 
+</li>
+
+<li>Why are conclusions drawn, verified, and communicated to professionals and the public(s)?
+</li>
+
+<li>Is science objective? 
+
+<ul class="org-ul">
+<li>What questions are we as society comfortable with asking? 
+</li>
+
+<li>What is the role of ethics in scientific investigations?
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Nazi Medical Experimentation and the body</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<ul class="org-ul">
+<li>Examples include, but not limited to: 
+
+<ul class="org-ul">
+<li>High Altitude experiments 
+</li>
+
+<li>Drug experiments 
+</li>
+
+<li>Freezing water 
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Drug Testing and Children</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<ul class="org-ul">
+<li>Case of anti-depressants and adolescents 
+</li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li>Re-branding of drugs for profit * Arthritis ##
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Conception and understanding of life</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<ul class="org-ul">
+<li>The "Sperm and Egg" Model Traditionally the woman's reproductive system was considered pretty passive, no we know that isn't the case. The woman's body is responsible for "weeding out" the weak of the Man's sperm
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2-4" class="outline-4">
+<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> Interventions in the environment</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
++Iron sulfate (Fertilizer) dumping into ocean
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Lecture 2 - Babylon and beyond</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+:Lecturer: Driggers
+:DATE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-01-23 Tue&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Orientation:</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>Survey of history if science, technology, medicine, etc. throughout greater Mesopotamian history
+</li>
+<li>General Details, geography, Etc.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> <span class="todo TODO">TODO</span> Theoretical Point: <i>Verify quotes&#x2026;</i></h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>where SHOULD we start this class?
+<code>Most professors start much later, with the Greeks; look at history through their eyes</code>
+</li>
+
+<li>The power of narrative
+</li>
+
+<li>Keep Reading!
+</li>
+
+<li>Problem with Near Eastern Studies - Far East Studies???
+To have a proper <i>Near east study</i> you have to be <i>near east</i>, most aren't.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Geographic location:</h3>
+<div class="outline-text-3" id="text-3-3">
+
+<div class="figure">
+<p><img src="./img/fertileCrescent.png" alt="fertileCrescent.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Fertile Crescent of early agriculture</p>
+</div>
+
+<ul class="org-ul">
+<li>Framed in Today's Geopolitical Landscape
+</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/GeoLand.png" alt="GeoLand.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 2:</span> More modern representation of area.</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Home to diverse groups of people</h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Sumerians
+</li>
+
+<li>Akkadians
+</li>
+
+<li>Persians 
+</li>
+
+<li>Babylonians
+</li>
+
+<li><b>Some of the oldest societies</b>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Hammurabi and his Code</h3>
+<div class="outline-text-3" id="text-3-5">
+<ul class="org-ul">
+<li>If any one finds runaway male or female slaves in the open country and bring them to their masters, the master of the slaves shall pay him two shekels of silver.
+</li>
+
+<li>If any one is committing a robbery and is caught, then he shall be put to death.
+</li>
+
+<li>If a tavern-keeper (feminine) does not accept corn according to gross weight in payment of a drink, but takes money, and the price of the drink is less than that of the corn, she shall be convicted and thrown into the water.
+</li>
+
+<li>If a son strike his father, his hands be hewn off.
+</li>
+
+<li>If a man knock out the teeth if his equal, his teeth shall be knocked out.
+</li>
+
+<li>If a barber, without the knowledge of his master, but the sign of a slave on a slave not to be sold, the hands of the barber shall be cut off.
+</li>
+
+<li>If a slave says to his master: "You are not my master" - if they convict him his master shall cut off his ear.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Timeline</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Goes back to 3500 BC
+</li>
+
+<li>Civilization arose around present day Iraq
+</li>
+
+<li>Communicated throughout a written language: cuneiform
+</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/CuneiformTablet.png" alt="CuneiformTablet.png" />
+</p>
+<p><span class="figure-number">Figure 3:</span> Cuneiform tablet writing</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Literature: <i>The Epic of Gilgamesh</i></h3>
+<div class="outline-text-3" id="text-3-7">
+<ul class="org-ul">
+<li>Written around 2100 BC
+</li>
+
+<li>About 12 books, or about 5 epic poems
+</li>
+
+<li><code>He saw the Secret, discovered the Hidden, he brought information of (the time) before the Flood. He went on a distance journey, pushing himself to exhaustion, but then was brought peace</code> (1.5-8)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8" class="outline-3">
+<h3 id="sec-3-8"><span class="section-number-3">3.8</span> Technological Achievement</h3>
+<div class="outline-text-3" id="text-3-8">
+<ul class="org-ul">
+<li>Metalworking (Bronze, Copper, Gold, and eventually iron)
+</li>
+
+<li>Glass making
+</li>
+
+<li>Textile Weaving
+</li>
+
+<li>Water Storage/control
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-3-8-1" class="outline-4">
+<h4 id="sec-3-8-1"><span class="section-number-4">3.8.1</span> Walls of Babylon <i>Part of <b>Seven Wonder</b></i></h4>
+<div class="outline-text-4" id="text-3-8-1">
+
+<div class="figure">
+<p><img src="./img/WallsBabylon.png" alt="WallsBabylon.png" />
+</p>
+<p><span class="figure-number">Figure 4:</span> Wall of Babylon</p>
+</div>
+
+<p>
+Provides great security, allows for focus on other aspects of life.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-2" class="outline-4">
+<h4 id="sec-3-8-2"><span class="section-number-4">3.8.2</span> <span class="todo TODO">TODO</span> Archimedes Screw: Verify location of possible garden's location with Driggers.</h4>
+<div class="outline-text-4" id="text-3-8-2">
+<p>
+Some scholars believe that this was how the supposed <i>handing gardens</i> were irrigated.
+</p>
+
+<div class="figure">
+<p><img src="./img/archScrew.png" alt="archScrew.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 5:</span> Archimedes Screw</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/HangingGardens.png" alt="HangingGardens.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 6:</span> Hanging Gardens</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/HangingGardens2.png" alt="HangingGardens2.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 7:</span> Possible location of gardens</p>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-8-3" class="outline-4">
+<h4 id="sec-3-8-3"><span class="section-number-4">3.8.3</span> Assyrian Pottery</h4>
+<div class="outline-text-4" id="text-3-8-3">
+<p>
+Allows travel to further distances away from immediate water access.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-4" class="outline-4">
+<h4 id="sec-3-8-4"><span class="section-number-4">3.8.4</span> Astronomy - Wrote down observations</h4>
+<div class="outline-text-4" id="text-3-8-4">
+<p>
+This allows us to <i>track</i> backwards in time and <i>line up</i> our time line, and understandings with theirs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-5" class="outline-4">
+<h4 id="sec-3-8-5"><span class="section-number-4">3.8.5</span> Mathematics</h4>
+<div class="outline-text-4" id="text-3-8-5">
+<p>
+Mostly derived from needs of scribes, and clerks, doing tax calculations, record keeping was also important.
+</p>
+
+
+<div class="figure">
+<p><img src="./img/CuneMath.png" alt="CuneMath.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 8:</span> Cuneiform Mathematics symbols.</p>
+</div>
+
+
+<div class="figure">
+<p><img src="./img/acctRecs.png" alt="acctRecs.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 9:</span> Accounting Records</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-8-6" class="outline-4">
+<h4 id="sec-3-8-6"><span class="section-number-4">3.8.6</span> Medicine</h4>
+<div class="outline-text-4" id="text-3-8-6">
+
+<div class="figure">
+<p><img src="./img/MedRecs.png" alt="MedRecs.png" width="300px" />
+</p>
+<p><span class="figure-number">Figure 10:</span> Medical Records</p>
+</div>
+
+<p>
+Scholars of early medicine started taking <i>notes</i> about what methods worked, and those that didn't
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Lecture 3 Ancient Egypt: Finish updating this info.</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+:DATE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-01-25 Thu&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Objectives</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>Survey of science, medicine, and technology in Ancient Egypt
+</li>
+
+<li>Begin out exploration of the three subjects, mention above in world cultures
+</li>
+
+<li>Briefly discuss <i>Time</i>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Opening Vignette <a id="Poem" name="Poem"></a></h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+I have a Mining region of the sovereign<br  />
+I had gown down to the sea<br  />
+In a board 120 cubits long<br  />
+40 cubits broad<br  />
+in which there were 120 sailors for the choicest of Egypt&#x2026;<br  />
+before it came they could fortell a gale<br  />
+a storm before it existed<br  />
+</p>
+
+<p>
+From A Tale of the Shipwrecked Sailor (Maybe from 2500 BC)
+</p>
+
+<ul class="org-ul">
+<li>Know that person was fairly intelligent. 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Thinking about time</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+\begin{align
+</p>
+
+<div class="figure">
+<p><img src="./img/egypttln.png" alt="egypttln.png" width="300px" />
+</p>
+</div>
+<ul class="org-ul">
+<li>323 BC Death of Alexander the Great
+</li>
+<li>0
+</li>
+<li>120 AD Roman Empire at its height
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-4-3-1" class="outline-4">
+<h4 id="sec-4-3-1"><span class="section-number-4">4.3.1</span> Gregorian Calendar</h4>
+<div class="outline-text-4" id="text-4-3-1">
+<ul class="org-ul">
+<li>Introduced in 1582
+</li>
+<li>Pop Gegory XIII
+</li>
+<li>Modification of Julian Calendar
+<ul class="org-ul">
+<li>Julian Calendar introduced by Juluis Ceasar as modification of teh current Roman Calendar, after Rome conquered Egypt
+</li>
+<li>365 Days, with a leap year every four years in February
+</li>
+<li>10 Days were dropped to make the celebrarion of Easter (usually at the Vernal Equinox) with the historical time of celebration in the Early chirstian Church
+</li>
+<li>More accurate calculation for leap year*
+-Driggers talks about this at length. Mainly about why we removed the 10 days from the location near Easter.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-2" class="outline-4">
+<h4 id="sec-4-3-2"><span class="section-number-4">4.3.2</span> Religious Traditions and Time</h4>
+<div class="outline-text-4" id="text-4-3-2">
+<ul class="org-ul">
+<li>For instance, it's 5776 in teh Jewish Tradition
+<ul class="org-ul">
+<li>Traditional Lunar-Solar Calendar (follow moon phases + solar year)
+</li>
+<li>From their makring of creatio
+</li>
+<li>Does not mean taht even Orthodox Jews think that the earth is only about 6,000 years old <code>(not young each creationist)</code> ???
+</li>
+</ul>
+</li>
+<li>The current Islamic year is 1437 AH. <code>In the year of HIjra</code>
+<ul class="org-ul">
+<li>Hijra (Mohammed flees from Mecca to MEdina; run out by political power of hte city)
+</li>
+<li>Lunar Calendar 354 days
+</li>
+<li>Starts teh year 622 CE <code>year of Hijra</code>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3-3" class="outline-4">
+<h4 id="sec-4-3-3"><span class="section-number-4">4.3.3</span> Egyptian Calendar</h4>
+<div class="outline-text-4" id="text-4-3-3">
+
+<div class="figure">
+<p><img src="./img/egyptcal.png" alt="egyptcal.png" />
+</p>
+</div>
+
+<p>
+Broken down, mainly followed the exceptionally regular flooding of the Nile.
+</p>
+
+
+<div class="figure">
+<p><img src="img/egyptcalCivil.png" alt="egyptcalCivil.png" />
+</p>
+</div>
+
+<p>
+Common Era and AFter Common Era
+</p>
+<ul class="org-ul">
+<li><b>BCE</b> "Before the common era" used interchangably with B.C or "Before Christ"
+</li>
+<li><b>CE</b> / <b>ACE</b> "Common Era" used interchangably with A.D. <code>Anno domini, in the year of our Lord</code>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> Continuation of discussion from earlier <a href="#Poem">4.2</a></h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+What does this "Primary Source" tell us about Egyptian Societ?
+</p>
+<ul class="org-ul">
+<li>What's a cubit?
+<ul class="org-ul">
+<li>Length of measurement, the average man's <span class="underline">forarm</span>
+</li>
+</ul>
+</li>
+<li>Ships?
+<ul class="org-ul">
+<li>Not sure what he wanted here&#x2026;
+</li>
+</ul>
+</li>
+<li>Knowledge that this primary source conveys?
+</li>
+
+<li>How does this hvae a bearing on science and technological development?
+Not a clue&#x2026;&#x2026;
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5"><span class="section-number-3">4.5</span> Background of Ancient Egypt</h3>
+<div class="outline-text-3" id="text-4-5">
+<p>
+<img src="img/ancegyptMap.png" alt="ancegyptMap.png" />
+<img src="img/modegyptMap.png" alt="modegyptMap.png" />
+</p>
+</div>
+
+<div id="outline-container-sec-4-5-1" class="outline-4">
+<h4 id="sec-4-5-1"><span class="section-number-4">4.5.1</span> The Nile river (The Life line of egypt)</h4>
+<div class="outline-text-4" id="text-4-5-1">
+<p>
+<img src="img/modNile.png" alt="modNile.png" />
+<img src="img/ancNile.png" alt="ancNile.png" />
+</p>
+
+<ul class="org-ul">
+<li>Discussion of the Nile
+<ul class="org-ul">
+<li>General Information/History about the nile
+</li>
+<li>Egypt's and its close relationship with the Nile
+</li>
+<li>Religion and the Nile
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-5-2" class="outline-4">
+<h4 id="sec-4-5-2"><span class="section-number-4">4.5.2</span> Advanced Plant knowledge</h4>
+<div class="outline-text-4" id="text-4-5-2">
+<p>
+<b>Example</b> Cyperus Papyrus - Essentially paper.
+<img src="img/papyrusPg.png" alt="papyrusPg.png" />
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5-3" class="outline-4">
+<h4 id="sec-4-5-3"><span class="section-number-4">4.5.3</span> Agricultieral Success</h4>
+<div class="outline-text-4" id="text-4-5-3">
+<ul class="org-ul">
+<li>What did egyptions grow to eat
+</li>
+<li>And Drink
+</li>
+
+<li>Examples of Food
+<ul class="org-ul">
+<li>Beer (Barley and Emmer) Driggers says this was used mainly to preserve the landowner's grain; however, this misses a crucial aspect of water preservation. 
+This might not have been a problem for folks in the Nile, but beer was crucial in sailing endeavors.
+</li>
+<li>Wine (Grapes) grains preservation.
+</li>
+<li>Spices 
+<ul class="org-ul">
+<li>Garlic, aniseed <code>the seed of the anise, used in cooking and herbal medicine.</code>, cinnamon, corriander, cumin, dill, fennel, marjoram, rosemary, and thyme (<sub>BUT</sub> NO PEPPER_?)
+</li>
+</ul>
+</li>
+<li>Meats
+<ul class="org-ul">
+<li>Cattle, Quail, &#x2013;hens raised for eggs MUCH later; dicks, geese)
+</li>
+</ul>
+</li>
+<li>Fish
+<ul class="org-ul">
+<li>Caught with net, spears, traps, and hooks <i>Seems like modern day fishing no????</i>
+</li>
+</ul>
+</li>
+<li>Veggies
+<ul class="org-ul">
+<li>beans, cabbage, celery &#x2013;worst food in world!; chickpeas, peas, onions, lentils
+</li>
+</ul>
+</li>
+<li>Fruits
+<ul class="org-ul">
+<li>apples, dates, figs, jujubes, olives, pomegranates, melons
+</li>
+</ul>
+</li>
+<li>Sweets/Sweetening Agents
+<ul class="org-ul">
+<li>Dates, fig, honey
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6"><span class="section-number-3">4.6</span> Egyptians at Sea</h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+<img src="img/7wonderLight.png" alt="7wonderLight.png" />
+No modern peoples are sure if this lighthouse ever really existed.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-7" class="outline-3">
+<h3 id="sec-4-7"><span class="section-number-3">4.7</span> Egyptain Civilization and Society (Organization)</h3>
+<div class="outline-text-3" id="text-4-7">
+<p>
+This "layout" is much like fudelism in the mideival period in Europe.
+</p>
+
+
+<div class="figure">
+<p><img src="img/egyptSoc.png" alt="egyptSoc.png" />
+</p>
+</div>
+
+
+<div class="figure">
+<p><img src="img/egyptExpsoc.png" alt="egyptExpsoc.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-8" class="outline-3">
+<h3 id="sec-4-8"><span class="section-number-3">4.8</span> Pharaoh</h3>
+<div class="outline-text-3" id="text-4-8">
+<ul class="org-ul">
+<li>Description of Pharaoh
+</li>
+<li>Shirtdiscussion of the Expansion fo Egyptian Power
+</li>
+<li>Divine Rule
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-4-8-1" class="outline-4">
+<h4 id="sec-4-8-1"><span class="section-number-4">4.8.1</span> Religion (Ra)</h4>
+<div class="outline-text-4" id="text-4-8-1">
+<p>
+Some scholars would argue that Egypts were monotheists. The argument would be along the lines of Ra was so important all the other gods just faded away.
+Pharaoh was the emodiment of Ra. when PH died Ra would <i>reincarnate</i> as the next PH in line.
+</p>
+
+
+<div class="figure">
+<p><img src="img/PHegRA.png" alt="PHegRA.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4-8-2" class="outline-4">
+<h4 id="sec-4-8-2"><span class="section-number-4">4.8.2</span> Religious tradition "the book of the dead"</h4>
+<div class="outline-text-4" id="text-4-8-2">
+<p>
+Didn't disuss the book, as I remember.<br  />
+    Mainly discuessed how when you die your heart is placed on a scale alongside a feather.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Lecture 4</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+:DATE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-01-25 Thu&gt;</span></span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Lecture 5</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+:DATE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-01 Thu&gt;</span></span>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Lecture 6 - Europe in the Middle Ages; Natural Philosophy: Remind driggers about quadrium</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+:Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-06 Tue&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> middle ages</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Two contributions medieval west gives us is Universities, and cathedrals
+:EXAM: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-15 Tue&gt;</span></span>
+</p>
+
+<p>
+Driggers Dressed in grad robes.<br  />
+</p>
+<ul class="org-ul">
+<li>Hat like what was worn
+<ul class="org-ul">
+<li>used to collect money after each lecture <code>approximately $20</code>
+</li>
+</ul>
+</li>
+
+<li>Robe like Geneva rode, similar to priests
+</li>
+<li>Colors represent 
+</li>
+</ul>
+
+<p>
+<code>Masters means to teach, or read</code><br  />
+Mace of university symbolic of power, president wears medallion to illustrate his power.<br  />
+</p>
+
+<p>
+Oxford and Cambridge don't give out paper, they give out a <code>metaphysical</code> degree, they place hands on the graduate.<br  />
+Doctorate comes from medieval period.<br  />
+Coat of arms comes from this era also.<br  />
+</p>
+
+<ul class="org-ul">
+<li>Back rows similar to today's lectures.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> Introduction</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+5th - 15th century <br  />
+</p>
+<ul class="org-ul">
+<li>philosophy
+</li>
+<li>medicine
+</li>
+<li>soci
+</li>
+<li>education in europe
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3"><span class="section-number-3">7.3</span> Timeline</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+[[]]
+Organized this way because we look back, and organize history.//
+Historians place order due to trends, sometimes they get it wrong.<br  />
+During this time in Europe when bad things: wars, plagues - Golden age of Islam&#x2026;
+</p>
+
+<ul class="org-ul">
+<li>Collapse of W. Rome (372-410 CE)<br  />
+</li>
+<li>Early middle ages (5th to 10th Century? CE)<br  />
+</li>
+<li>High Middle ages (1001-1300 CE) <br  />
+</li>
+</ul>
+<p>
+Renascence
+</p>
+<ul class="org-ul">
+<li>Late middle ages (1301-1500? CE)<br  />
+</li>
+</ul>
+
+
+<p>
+As Islamic civilization continued golden age, they have more emirates, one in Spain.<br  />
+Charlemagne main grandchild of person who stops advance of <i>moores</i> 
+</p>
+
+<p>
+byzantine empire expands<br  />
+Western Europe has de urbanization problems, city governments abandoned.
+&#x2026; Russians start to get organized
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4"><span class="section-number-3">7.4</span> Medieval Times</h3>
+<div class="outline-text-3" id="text-7-4">
+<ul class="org-ul">
+<li>social order<br  />
+</li>
+<li>towns/urban spaces like<br  />
+</li>
+<li>religious life and science?<br  />
+</li>
+<li>Scientific production of med uro.
+</li>
+</ul>
+
+<p>
+During this time in Europe when bad things: wars, plagues - Golden age of Islam&#x2026;
+due to trends, sometimes they get it wrong.<br  />
+</p>
+</div>
+<div id="outline-container-sec-7-4-1" class="outline-4">
+<h4 id="sec-7-4-1"><span class="section-number-4">7.4.1</span> Zombie Apocalypse</h4>
+<div class="outline-text-4" id="text-7-4-1">
+<p>
+What would happen if we had to abandon the city, where would we go? <br  />
+Go to manors and agree to work in exchange for essentially <code>food</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-4-2" class="outline-4">
+<h4 id="sec-7-4-2"><span class="section-number-4">7.4.2</span> Feudalism</h4>
+<div class="outline-text-4" id="text-7-4-2">
+<p>
+We don't really know where feudalism started. Most think England, maybe w. France.
+</p>
+<ul class="org-ul">
+<li><b>Nobles</b> - highest is king - Obligated to defend other two groups <span class="underline">can become <i>knight groups</i></span> <br  />
+</li>
+<li><b>Priests</b> - Praying for everyone all the time. ?Pray for people who might be in purgatory?
+</li>
+<li><b>Serfs</b> - People doing the work.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5"><span class="section-number-3">7.5</span> Scholarly life</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+1050 and the return of "classical learning"<br  />
+The importance of Aristotle v. Plato in Medieval Europe<br  />
+</p>
+<ul class="org-ul">
+<li>Aristotle most important, however, Plato was taught&#x2026;?<br  />
+</li>
+<li>What is neo-platonism?<br  />
+        Plato was very abstract and hard to translate.
+\\Some would say Jesus was a neo-platonist
+</li>
+</ul>
+<p>
+<code>If western translators had done more of Plato's works the chances are good that we would see more of his works in this time period</code>
+</p>
+<ul class="org-ul">
+<li>Medieval Universities
+<ul class="org-ul">
+<li>Curriculum and instruction<br  />
+    Materials/ideas: 7 labors
+<ul class="org-ul">
+<li>trivium help make an argument rhetoric type instruction. You know enough to go on.
+</li>
+<li>quadrium
+</li>
+</ul>
+</li>
+<li>Scholasticism
+<ul class="org-ul">
+<li>knowledge is publishing papers.
+dismutation, debate around an issue - the nature of something.
+</li>
+<li>More of a method than anything.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-7-5-1" class="outline-4">
+<h4 id="sec-7-5-1"><span class="section-number-4">7.5.1</span> Roger bacon</h4>
+<div class="outline-text-4" id="text-7-5-1">
+<p>
+Medieval professor - forms basis of scientific method. Makes artificial rainbow and freaks out students.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-5-2" class="outline-4">
+<h4 id="sec-7-5-2"><span class="section-number-4">7.5.2</span> William of Ockham - Ockham's razor.</h4>
+</div>
+
+<div id="outline-container-sec-7-5-3" class="outline-4">
+<h4 id="sec-7-5-3"><span class="section-number-4">7.5.3</span> Albert Magnus <i>Albert the great</i></h4>
+<div class="outline-text-4" id="text-7-5-3">
+<p>
+Falconry regarded as scholar priest and professor
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-5-4" class="outline-4">
+<h4 id="sec-7-5-4"><span class="section-number-4">7.5.4</span> Hildegard of Bingen Nun</h4>
+<div class="outline-text-4" id="text-7-5-4">
+<p>
+Outlier example of intellectual thought done by women<br  />
+</p>
+<ul class="org-ul">
+<li>Creates a lot of music <i>like a Renascence women</i> 
+</li>
+<li>Has a medical garden
+</li>
+<li>publishes medical material 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-5-5" class="outline-4">
+<h4 id="sec-7-5-5"><span class="section-number-4">7.5.5</span> Cristine Depuzon?</h4>
+<div class="outline-text-4" id="text-7-5-5">
+<p>
+Wrote book about all women city state
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-sec-7-5-6" class="outline-4">
+<h4 id="sec-7-5-6"><span class="section-number-4">7.5.6</span> Thomas Aquinas</h4>
+<div class="outline-text-4" id="text-7-5-6">
+<ul class="org-ul">
+<li>Explains how different substances come to together to form new material.
+</li>
+<li>Aquinas Cosmos
+<ul class="org-ul">
+<li>Dante's inferno arises from this.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7-6" class="outline-3">
+<h3 id="sec-7-6"><span class="section-number-3">7.6</span> Medieval engineering</h3>
+<div class="outline-text-3" id="text-7-6">
+<ul class="org-ul">
+<li>Heavy plows 
+</li>
+<li>Trebuchets
+</li>
+<li>crossbow
+</li>
+<li>could think of castles
+</li>
+<li>Artificial power - wind mills
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-7" class="outline-3">
+<h3 id="sec-7-7"><span class="section-number-3">7.7</span> Music</h3>
+<div class="outline-text-3" id="text-7-7">
+<p>
+hurdi gurdi???
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-8" class="outline-3">
+<h3 id="sec-7-8"><span class="section-number-3">7.8</span> Medieval medicine</h3>
+<div class="outline-text-3" id="text-7-8">
+<ul class="org-ul">
+<li>Black Death
+<ul class="org-ul">
+<li>Some people think this was an oldschool ebola 
+Sutonic virus 
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-7-8-1" class="outline-4">
+<h4 id="sec-7-8-1"><span class="section-number-4">7.8.1</span> Old theory</h4>
+<div class="outline-text-4" id="text-7-8-1">
+<p>
+Rats on ships is how the diseases spread.
+</p>
+<ul class="org-ul">
+<li>Physicians and the plague
+</li>
+</ul>
+
+
+
+<ul class="org-ul">
+<li>Thought maybe astrological upsets caused the plagues.<br  />
+</li>
+<li>serfs were able to negotiate for higher pay since soo many people died, there weren't many people around to work.<br  />
+</li>
+</ul>
+<p>
++Chronicles of the plague
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> Lecture 7 - test bank, Golden age of Islamic philosophy: email driggers about magic early Tuesday morning.</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+:DATE: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-08 Thu&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1"><span class="section-number-3">8.1</span> What to expect on test.</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+40*2 = 80%
+</p>
+<ul class="org-ul">
+<li>m.c.
+</li>
+<li>T/F, if a little false, all the way false&#x2026;
+</li>
+<li>Fill in the blank
+</li>
+</ul>
+<p>
+1 essay @ 20 pt
+</p>
+<ul class="org-ul">
+<li>Args
+</li>
+<li>3 <b>P</b> min
+</li>
+<li>be detailed
+</li>
+<li>Don't care about grammar for test essay.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2"><span class="section-number-3">8.2</span> Outline</h3>
+<div class="outline-text-3" id="text-8-2">
+<ul class="org-ul">
+<li>historical case study
+</li>
+<li>transition to byzantine empirer
+</li>
+<li>&#x2026;
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-3" class="outline-3">
+<h3 id="sec-8-3"><span class="section-number-3">8.3</span> Contextualizing Historical Terms</h3>
+<div class="outline-text-3" id="text-8-3">
+<ul class="org-ul">
+<li>Ancient Greek (500 - 336 BC)<br  />
+</li>
+<li>Golden Age of Islmaic philosophy (~ 700CE-1300 BCE)<br  />
+</li>
+<li>The renaissance of eastern and wester Europe()<br  />
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-4" class="outline-3">
+<h3 id="sec-8-4"><span class="section-number-3">8.4</span> Islamic era maps 1</h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+Islamic era began after mohammed.
+</p>
+
+<p>
+High era really ended after conquestor moved in (1497)???
+</p>
+
+<p>
+Battle of toors charles montel stops military campain of moors&#x2026;
+</p>
+
+<p>
+Mongols are busy during this time, Baghdad sacked during this time.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-5" class="outline-3">
+<h3 id="sec-8-5"><span class="section-number-3">8.5</span> Islamic era map 2</h3>
+<div class="outline-text-3" id="text-8-5">
+<p>
+arrested dev of middle Europe?
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-6" class="outline-3">
+<h3 id="sec-8-6"><span class="section-number-3">8.6</span> Scientific terms</h3>
+</div>
+
+<div id="outline-container-sec-8-7" class="outline-3">
+<h3 id="sec-8-7"><span class="section-number-3">8.7</span> Cities of golden age</h3>
+<div class="outline-text-3" id="text-8-7">
+<ul class="org-ul">
+<li>Irrigation and Prosperity//
+</li>
+<li>Relative city pops: really high
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-8" class="outline-3">
+<h3 id="sec-8-8"><span class="section-number-3">8.8</span> Hydraulic Tech - The qanat</h3>
+<div class="outline-text-3" id="text-8-8">
+<ul class="org-ul">
+<li>Gently sloping tunnels, moves water from natural aquifers.
+</li>
+<li>These had dams
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-8-9" class="outline-3">
+<h3 id="sec-8-9"><span class="section-number-3">8.9</span> Transmission of tech</h3>
+<div class="outline-text-3" id="text-8-9">
+<ul class="org-ul">
+<li>Literate society<br  />
+  This was due to the expectation of each individual reading the quaran every day.
+</li>
+
+<li>Many uses of scientific instruments
+<ul class="org-ul">
+<li>Case of astrolabe
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Astrolabe can do over 300 types of calculations.
+</p>
+<ul class="org-ul">
+<li>Used to calculate direction of Mecca
+</li>
+<li>Used to determine time of prayer.
+</li>
+</ul>
+
+<p>
+Greeks/someone used to forecast horoscopes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-10" class="outline-3">
+<h3 id="sec-8-10"><span class="section-number-3">8.10</span> Houses of wisdom</h3>
+<div class="outline-text-3" id="text-8-10">
+<p>
+Literal translation factories in city of Baghdad
+</p>
+<ul class="org-ul">
+<li>Receive patronage from rulers of city<br  />
+</li>
+<li>Functioned as library for person consumption, although typically he would allow other scholars access.
+</li>
+</ul>
+
+<p>
+Also has intellectual effect
+</p>
+<ul class="org-ul">
+<li>While working on Greek translators, these translators come up with idea of science and other Greek aspects make up base for <code>good</code> knowledge.
+</li>
+</ul>
+
+<p>
+Able to translate Greek texts to their religious texts.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-11" class="outline-3">
+<h3 id="sec-8-11"><span class="section-number-3">8.11</span> Hunaynn ibn Ishaq (Latin Iohannities) <code>you/yoo knight us</code></h3>
+<div class="outline-text-3" id="text-8-11">
+<p>
+contributing member of Islamic society.<br  />
+fluent in Greek Syriac ???
+</p>
+
+<p>
+Translated Greek into Syriac and his family translated into Arabic.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-12" class="outline-3">
+<h3 id="sec-8-12"><span class="section-number-3">8.12</span> Avicenna - Ibin Sinda</h3>
+<div class="outline-text-3" id="text-8-12">
+<ul class="org-ul">
+<li>natural philosopher and a physician<br  />
+</li>
+<li>wrote book of healing and cannon of medicine
+</li>
+</ul>
+
+<p>
+comes from present day Iran, understood Aristotle very well.
+</p>
+
+<p>
+Saves life of one of royals, allowed to access their library, spends rest of days reflecting on these Greek texts.
+</p>
+</div>
+
+<div id="outline-container-sec-8-12-1" class="outline-4">
+<h4 id="sec-8-12-1"><span class="section-number-4">8.12.1</span> Book of healing</h4>
+<div class="outline-text-4" id="text-8-12-1">
+<p>
+11th century
+</p>
+<ul class="org-ul">
+<li>more of encyclopedia: why things are the way they are.//
+</li>
+</ul>
+
+<p>
+Criticize and interpreted Aristotle and made writings on this. Also became his own authority.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-12-2" class="outline-4">
+<h4 id="sec-8-12-2"><span class="section-number-4">8.12.2</span> Canon of medicine</h4>
+<div class="outline-text-4" id="text-8-12-2">
+<p>
+Synthesis of Greek medicine ideas, and folk Arabic medicine, also poems and thoughts on medicine.<br  />
+has ideas about incorporating feelings into humors.
+</p>
+
+<p>
+<b>Rose water</b> had healing power, or so thought.
+</p>
+
+<p>
+Most middle westerners liked him, he sands down Aristotle
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8-13" class="outline-3">
+<h3 id="sec-8-13"><span class="section-number-3">8.13</span> Medicine/Biology and Images 2</h3>
+<div class="outline-text-3" id="text-8-13">
+<p>
+How do you convey images of body, when you have prohibitions on that type of study of body, not allowed to capture essence of a person's body//
+</p>
+
+<p>
+Stuff was written to appear as words and shapes.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-14" class="outline-3">
+<h3 id="sec-8-14"><span class="section-number-3">8.14</span> </h3>
+<div class="outline-text-3" id="text-8-14">
+<p>
+No structure&#x2026; Developed trig algebra, our numerals
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-15" class="outline-3">
+<h3 id="sec-8-15"><span class="section-number-3">8.15</span> Mosque</h3>
+<div class="outline-text-3" id="text-8-15">
+<p>
+Facilitated learning 
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-16" class="outline-3">
+<h3 id="sec-8-16"><span class="section-number-3">8.16</span> observatories</h3>
+</div>
+
+<div id="outline-container-sec-8-17" class="outline-3">
+<h3 id="sec-8-17"><span class="section-number-3">8.17</span> Midrasas? - law centers</h3>
+</div>
+
+
+<div id="outline-container-sec-8-18" class="outline-3">
+<h3 id="sec-8-18"><span class="section-number-3">8.18</span> <span class="todo TODO">TODO</span> Hospitals: The medieval Islamic hospital <code>in lib</code></h3>
+<div class="outline-text-3" id="text-8-18">
+<p>
+Christian physicians were astonished to see female healers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-19" class="outline-3">
+<h3 id="sec-8-19"><span class="section-number-3">8.19</span> Toledo, Spain</h3>
+<div class="outline-text-3" id="text-8-19">
+<p>
+Man religions worked together on translations
+</p>
+
+<p>
+Archbishop was able to get scholars of different backgrounds to work together.
+</p>
+
+<p>
+<b>reconquist</b> redefines boundaries of Islamic society.
+</p>
+<ul class="org-ul">
+<li>After this a lot of the texts are left behind, and invading peoples rediscover the ancient Greek texts.
+</li>
+</ul>
+
+<p>
+<b>Erasure of middle eastern contribution to science from Islamic society</b>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-20" class="outline-3">
+<h3 id="sec-8-20"><span class="section-number-3">8.20</span> Byzantine empire - Byzantium 2</h3>
+<div class="outline-text-3" id="text-8-20">
+<p>
+Mostly spoke Greek here.//
+new streams of Latin development
+</p>
+
+<p>
+Roman Catholic Church uses Latin
+</p>
+
+<p>
+Orthodox church use Greek
+</p>
+
+<p>
+Byz's loved horse races, like today's football.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-8-21" class="outline-3">
+<h3 id="sec-8-21"><span class="section-number-3">8.21</span> Crusades have huge affects, we don't really get into it&#x2026;..yet.</h3>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> Lecture 8 - Magic; Medieval &amp; Rennnaissance Cathedrals</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Get an index card, front and back.
+</p>
+</div>
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1"><span class="section-number-3">9.1</span> Guiding poitns</h3>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2"><span class="section-number-3">9.2</span> Byzantium</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li>Eastern Divition of roman Empire Diaclecian cuts up roamn empire into four, which becomes 2 districts.
+<ul class="org-ul">
+<li>continueation of Roman culture
+</li>
+<li>Roman sacked
+</li>
+</ul>
+</li>
+<li>Really into horse racing, like our modern day super bowl
+</li>
+
+<li>Eastern Orthodox Church - Second largest demoniation of Christians today
+</li>
+<li>Neo-Platonists Academy of teh fifth century
+</li>
+<li>University of Constantinople/ "Pandidakterion"
+<ul class="org-ul">
+<li>geometry, music, liberal arts&#x2026;
+</li>
+<li>Taught subjects in greek, and another language.
+</li>
+</ul>
+</li>
+<li>Anna Komnene (Comenea)
+<ul class="org-ul">
+<li>Expert on Gout, her father had goud, recieved medical training at UoC
+</li>
+</ul>
+</li>
+<li>Hagia Sophia - Basilica <code>Holy Wisdom</code>
+<ul class="org-ul">
+<li>Pendentives/engineering of the dome
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-9-2-1" class="outline-4">
+<h4 id="sec-9-2-1"><span class="section-number-4">9.2.1</span> Pendentives Curvature under the dome, support columns</h4>
+</div>
+</div>
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3"><span class="section-number-3">9.3</span> Cathedrals</h3>
+<div class="outline-text-3" id="text-9-3">
+<ul class="org-ul">
+<li>Architecural contributions
+</li>
+<li>Masons
+</li>
+<li>Layout
+</li>
+<li>Examples
+</li>
+</ul>
+</div>
+<div id="outline-container-sec-9-3-1" class="outline-4">
+<h4 id="sec-9-3-1"><span class="section-number-4">9.3.1</span> Masons</h4>
+<div class="outline-text-4" id="text-9-3-1">
+<ul class="org-ul">
+<li>Builders of these massive buildings
+</li>
+<li>First thing you do is build your toolbox
+</li>
+<li>Most masons were illiterate, learned through apprenticeships
+<ul class="org-ul">
+<li>Very good at reading stars for layout
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-3-2" class="outline-4">
+<h4 id="sec-9-3-2"><span class="section-number-4">9.3.2</span> Neo-Gothic movement in America</h4>
+<div class="outline-text-4" id="text-9-3-2">
+<ul class="org-ul">
+<li>Movement to using Gothic style.
+</li>
+<li>Everyday life lived through progress in cathedral
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-3-3" class="outline-4">
+<h4 id="sec-9-3-3"><span class="section-number-4">9.3.3</span> Flying Bittress</h4>
+</div>
+</div>
+
+<div id="outline-container-sec-9-4" class="outline-3">
+<h3 id="sec-9-4"><span class="section-number-3">9.4</span> Education "in" the cathedral school</h3>
+<div class="outline-text-3" id="text-9-4">
+<ul class="org-ul">
+<li>Cathredral schools begin here.
+</li>
+<li>Balogna
+</li>
+<li>Oxford
+</li>
+<li>Cambridge
+</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-sec-9-5" class="outline-3">
+<h3 id="sec-9-5"><span class="section-number-3">9.5</span> David</h3>
+<div class="outline-text-3" id="text-9-5">
+<ul class="org-ul">
+<li>Return to calssical sources drives Western Ruropean Renaissance
+</li>
+<li>Arabic contributions to the Greek and Roman Texts are conciously removed
+</li>
+<li>Cities like Florence aspire to reproduce ancient culture
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-9-6" class="outline-3">
+<h3 id="sec-9-6"><span class="section-number-3">9.6</span> Art comveys Emition//Religion as Art</h3>
+<div class="outline-text-3" id="text-9-6">
+<ul class="org-ul">
+<li>Rennaisance, art starts to look more like real people.
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-9-6-1" class="outline-4">
+<h4 id="sec-9-6-1"><span class="section-number-4">9.6.1</span> Case study 1 - Filippo Brunelleschi (1377-1446)</h4>
+<div class="outline-text-4" id="text-9-6-1">
+<ul class="org-ul">
+<li>Flortenian gold smith
+</li>
+<li>worked carefully with gold
+</li>
+<li>Guy loses "door competition" in florence
+</li>
+</ul>
+</div>
+<ol class="org-ol"><li><a id="sec-9-6-1-1" name="sec-9-6-1-1"></a>Pantheon, Rome (Finished about 126 CE)<br  /><div class="outline-text-5" id="text-9-6-1-1">
+<p>
+Florence wanted to <code>harken</code> back to teh pantheon.
+If I can keep this eg right up, without any other support will you give me the contract
+</p>
+</div>
+</li>
+<li><a id="sec-9-6-1-2" name="sec-9-6-1-2"></a>Lifting machine<br  /></li>
+
+<li><a id="sec-9-6-1-3" name="sec-9-6-1-3"></a>Herringbone brick pattern at cathedral <code>Spino pachiia</code><br  /></li></ol>
+</div>
+</div>
+
+<div id="outline-container-sec-9-7" class="outline-3">
+<h3 id="sec-9-7"><span class="section-number-3">9.7</span> Video gGames as Tools//Historical Interpretation</h3>
+<div class="outline-text-3" id="text-9-7">
+<ul class="org-ul">
+<li>Cathedral of the Holy Cross
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> Lecture 9 - Revolutions in Science (Part 1): Copernicus</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+DATE:<span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-20 Tue&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1"><span class="section-number-3">10.1</span> Death bed of copernicus - 1543</h3>
+<div class="outline-text-3" id="text-10-1">
+<ul class="org-ul">
+<li>Copernicus was a priest
+</li>
+<li>De rev - His book
+<ul class="org-ul">
+<li>Written for a small circle of Catholic astronomers
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2"><span class="section-number-3">10.2</span> Thomas Kuhn 1</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+Philosphy of science
+</p>
+<ul class="org-ul">
+<li>Structure of scientific revolution
+</li>
+<li>PHD physicist
+</li>
+<li>Teaches class [physics for poets]
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3"><span class="section-number-3">10.3</span> Thomas Kuhn 2</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+Lookup more info on phage treatments
+</p>
+</div>
+
+<div id="outline-container-sec-10-3-1" class="outline-4">
+<h4 id="sec-10-3-1"><span class="section-number-4">10.3.1</span> <span class="todo TODO">TODO</span> determine if "inner circles" were to correct for thoughts of perfect circular orbits.</h4>
+</div>
+</div>
+
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4"><span class="section-number-3">10.4</span> Tycho Brahe 1</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+Very unpleasant, unhumble person. Perhaps dies due to 
+</p>
+</div>
+<div id="outline-container-sec-10-4-1" class="outline-4">
+<h4 id="sec-10-4-1"><span class="section-number-4">10.4.1</span> Sister Sophia Bahe</h4>
+<div class="outline-text-4" id="text-10-4-1">
+<ul class="org-ul">
+<li>Long life, really long considering what age she lived in, IMO
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-10-4-2" class="outline-4">
+<h4 id="sec-10-4-2"><span class="section-number-4">10.4.2</span> Astronomer</h4>
+<div class="outline-text-4" id="text-10-4-2">
+<ul class="org-ul">
+<li>KEpler was assistant to tycho
+</li>
+<li>Geo-Heliocoentrism
+<ul class="org-ul">
+<li>Earth is only planet that doesn't revolve around sun, Sun revolves around Earth.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5"><span class="section-number-3">10.5</span> Kepler; see previous</h3>
+<div class="outline-text-3" id="text-10-5">
+<ul class="org-ul">
+<li>Gives us three laws of planetary motion
+</li>
+<li>Gives us elipses
+</li>
+<li></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> Lecture 10 - Galileo's Struggle and Triumphs; Magic is test corrections</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-sec-11-1" class="outline-3">
+<h3 id="sec-11-1"><span class="section-number-3">11.1</span> Galileo and Music</h3>
+<div class="outline-text-3" id="text-11-1">
+<p>
+TY:8HL2qvO4jXk
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-2" class="outline-3">
+<h3 id="sec-11-2"><span class="section-number-3">11.2</span> Framing questions</h3>
+<div class="outline-text-3" id="text-11-2">
+<p>
+able to transcend ?? controls
+How did the nature of Galileo's character affect thou outcome if this life.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-3" class="outline-3">
+<h3 id="sec-11-3"><span class="section-number-3">11.3</span> Galileo (1562-1642)</h3>
+<div class="outline-text-3" id="text-11-3">
+<p>
+Cosmos made him out to be a hero, has to work with church in some instances
+</p>
+<ul class="org-ul">
+<li>Uni prof who hates his job. He teaches math, upper division is theology
+</li>
+<li>Wants to do his own work
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-11-3-1" class="outline-4">
+<h4 id="sec-11-3-1"><span class="section-number-4">11.3.1</span> Profs in this time weren't allowed to marry.</h4>
+<div class="outline-text-4" id="text-11-3-1">
+<p>
+This didn't stop him trying to find love..
+He had a family, 2-3 illigitimate children
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11-4" class="outline-3">
+<h3 id="sec-11-4"><span class="section-number-3">11.4</span> Virginia Galilei/Maria Celeste</h3>
+<div class="outline-text-3" id="text-11-4">
+<p>
+2 daughters 1 son.
+</p>
+<ul class="org-ul">
+<li>Son had no issues with illigitimate background, however daughters can't marry becuase of their illigitimate status.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-5" class="outline-3">
+<h3 id="sec-11-5"><span class="section-number-3">11.5</span> Galileo has a problem with authority&#x2026;</h3>
+</div>
+<div id="outline-container-sec-11-6" class="outline-3">
+<h3 id="sec-11-6"><span class="section-number-3">11.6</span> Case Study: Galileo</h3>
+<div class="outline-text-3" id="text-11-6">
+<ul class="org-ul">
+<li>Humble begginnings
+</li>
+<li>World of the telescope
+</li>
+<li>The Starry Messenger (1610)
+<ul class="org-ul">
+<li>Sees potential in telescope, he uses is own abilities and grinds his own lenses, to produce 30X 3 times the standard at that time.
+</li>
+</ul>
+</li>
+<li>Prior to this Astronomy is really boring, pretty much just a lot of math, and observing positions of spacely bodies.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-7" class="outline-3">
+<h3 id="sec-11-7"><span class="section-number-3">11.7</span> Starry messenger</h3>
+<div class="outline-text-3" id="text-11-7">
+<p>
+Drew illustrations and were published in SIDEREVS 
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-8" class="outline-3">
+<h3 id="sec-11-8"><span class="section-number-3">11.8</span> Galileo and his world</h3>
+<div class="outline-text-3" id="text-11-8">
+<ul class="org-ul">
+<li>Medician starts (or Moons of Jupiter)
+</li>
+<li>Move Sicen from teh Universitry to the court
+<ul class="org-ul">
+<li></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-9" class="outline-3">
+<h3 id="sec-11-9"><span class="section-number-3">11.9</span> Court life</h3>
+<div class="outline-text-3" id="text-11-9">
+<ul class="org-ul">
+<li>Medici Court
+<ul class="org-ul">
+<li>Dinner time debates?
+</li>
+<li>Letter to GRand Duchess Christina
+</li>
+<li>Discusses origins of science and religion, and Bible.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-11-10" class="outline-3">
+<h3 id="sec-11-10"><span class="section-number-3">11.10</span> Grand duchess Chirstina GD of Tuscany (1565-1637)</h3>
+<div class="outline-text-3" id="text-11-10">
+<p>
+Related to Medici's through blood, distance cousin
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-11" class="outline-3">
+<h3 id="sec-11-11"><span class="section-number-3">11.11</span> Galileo and Heliocentric Theory</h3>
+<div class="outline-text-3" id="text-11-11">
+<ul class="org-ul">
+<li>Galileo defends Compernican system?
+</li>
+<li>Catholic Chruch reacts
+<ul class="org-ul">
+<li>"De Rev"
+</li>
+<li>Galileo reacts
+</li>
+<li>Catholic Church Reacts to Galilero
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-12" class="outline-3">
+<h3 id="sec-11-12"><span class="section-number-3">11.12</span> New Pope -&gt; Urban VIII</h3>
+<div class="outline-text-3" id="text-11-12">
+<p>
+new ?? to teach people about copernican and ptolmaic understandings??
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-11-13" class="outline-3">
+<h3 id="sec-11-13"><span class="section-number-3">11.13</span> Galileo's other book "Dialogue of the Two Chief World Systems" (1632)</h3>
+<div class="outline-text-3" id="text-11-13">
+<ul class="org-ul">
+<li>Four Characters
+<ul class="org-ul">
+<li>[NArrator]*
+</li>
+<li>Salviatti
+</li>
+<li>Sagredo
+</li>
+<li>Simplicio - represents the ptolmaic system
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-14" class="outline-3">
+<h3 id="sec-11-14"><span class="section-number-3">11.14</span> outside of the galileo case study</h3>
+<div class="outline-text-3" id="text-11-14">
+<ul class="org-ul">
+<li>Women contributing to astronomy &amp; other sciences around teh same time:
+<ul class="org-ul">
+<li>Jeanne Dumme
+<ul class="org-ul">
+<li>Popularizer of Galileo's ideas, and advocated that Women can think for themselves
+</li>
+</ul>
+</li>
+<li>Ann Baynard
+</li>
+<li>Aphra Behn
+Both are cited in works Supposed to podcast about Aphra, physicians
+</li>
+</ul>
+</li>
+
+<li>Did Science flourish outside teh catholic church?
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-11-15" class="outline-3">
+<h3 id="sec-11-15"><span class="section-number-3">11.15</span> Other revolutions of Sorts</h3>
+<div class="outline-text-3" id="text-11-15">
+</div><div id="outline-container-sec-11-15-1" class="outline-4">
+<h4 id="sec-11-15-1"><span class="section-number-4">11.15.1</span> William Harvery (1578-1657)</h4>
+<div class="outline-text-4" id="text-11-15-1">
+<ul class="org-ul">
+<li>Physician
+</li>
+<li><i>On teh motion of the heard and blood</i> (1682)
+Used a tournicate to illustrate how blood circulated through body.
+</li>
+</ul>
+
+<div class="figure">
+<p><img src="./img/timeline227.png" alt="timeline227.png" />
+</p>
+</div>
+
+<div class="figure">
+<p><img src="./img/timeline227.png" alt="timeline227.png" />
+</p>
+<p><span class="figure-number">Figure 18:</span> Timeline for scientific discovery</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12"><span class="section-number-2">12</span> LEcture 11? - Was the scientific Rev neither scientif or reolutionary? - Case study NEwton</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2018-03-01 Thu&gt;</span></span>
+Origin of newton doesn't sound like he will change the world.
+</p>
+</div>
+
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><span class="section-number-3">12.1</span> Framing questions</h3>
+<div class="outline-text-3" id="text-12-1">
+<ul class="org-ul">
+<li>rev new values as new app to knowledge
+</li>
+<li>isaac N exemplar of cult and sci rev.
+</li>
+<li>Roy society as an instition
+</li>
+<li>How did newton bring science to the public politicians?
+</li>
+<li>WE have raised edges on coins so the merchants can't file them off without detection.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2"><span class="section-number-3">12.2</span> a little review</h3>
+<div class="outline-text-3" id="text-12-2">
+<ul class="org-ul">
+<li>Geo        ptolemy
+</li>
+<li>Helio        copern
+</li>
+<li>geo        tycho
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-12-3" class="outline-3">
+<h3 id="sec-12-3"><span class="section-number-3">12.3</span> Coernicus to Newton</h3>
+<div class="outline-text-3" id="text-12-3">
+<p>
+Sidarus Nuncus???
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-4" class="outline-3">
+<h3 id="sec-12-4"><span class="section-number-3">12.4</span> Isaac Newrton (1642-1727)</h3>
+<div class="outline-text-3" id="text-12-4">
+<p>
+Calculus?
+Apple
+Alchemist
+super paranoid
+sexuality repressed
+<code>How they chocked, how they croaked</code>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-5" class="outline-3">
+<h3 id="sec-12-5"><span class="section-number-3">12.5</span> <span class="todo TODO">TODO</span> INtro to Isaac Newton; get copy of Driggers manuscript</h3>
+<div class="outline-text-3" id="text-12-5">
+<p>
+He went to school by buying his books and learning on his own.
+Humoral theory doesn't cover black death, Decaying miasma?
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-6" class="outline-3">
+<h3 id="sec-12-6"><span class="section-number-3">12.6</span> Miracle year</h3>
+<div class="outline-text-3" id="text-12-6">
+<ul class="org-ul">
+<li>Annus Mirbils of 1666
+<ul class="org-ul">
+<li></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-12-7" class="outline-3">
+<h3 id="sec-12-7"><span class="section-number-3">12.7</span> Scientific Controversies</h3>
+<div class="outline-text-3" id="text-12-7">
+<ul class="org-ul">
+<li>"The Opticks" (1672)
+</li>
+<li>Resulting Argument/Controversies
+</li>
+</ul>
+
+<p>
+Before Isaacs time the prism light theory was that the prism added light.
+</p>
+
+<p>
+Doesn't like to be challenged.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-12-8" class="outline-3">
+<h3 id="sec-12-8"><span class="section-number-3">12.8</span> Return to Cambridge 1667</h3>
+</div>
+
+<div id="outline-container-sec-12-9" class="outline-3">
+<h3 id="sec-12-9"><span class="section-number-3">12.9</span> New Questions</h3>
+<div class="outline-text-3" id="text-12-9">
+<ul class="org-ul">
+<li>Problem with the Orbits of Comets
+<ul class="org-ul">
+<li>Newton and a low profile
+</li>
+<li>1684 Edmund Halley pays Newton a Visit
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-12-10" class="outline-3">
+<h3 id="sec-12-10"><span class="section-number-3">12.10</span> The Principia 'pren kip e ah'</h3>
+<div class="outline-text-3" id="text-12-10">
+<ul class="org-ul">
+<li>Math
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13"><span class="section-number-2">13</span> Lecture ? - Voyages of Discovery</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2018-03-13 Tue&gt;</span></span>
+</p>
+</div>
+
+<div id="outline-container-sec-13-1" class="outline-3">
+<h3 id="sec-13-1"><span class="section-number-3">13.1</span> Guiding Questions</h3>
+<div class="outline-text-3" id="text-13-1">
+<ul class="org-ul">
+<li>VOAs guide enlightenment
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-13-2" class="outline-3">
+<h3 id="sec-13-2"><span class="section-number-3">13.2</span> Frankenstein</h3>
+<div class="outline-text-3" id="text-13-2">
+<ul class="org-ul">
+<li>Romanticism is about getting scientific knowledge for knowledge's sake
+</li>
+<li></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-13-3" class="outline-3">
+<h3 id="sec-13-3"><span class="section-number-3">13.3</span> Scramble for atlantic</h3>
+<div class="outline-text-3" id="text-13-3">
+<ul class="org-ul">
+<li>Reason - wealth
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-13-4" class="outline-3">
+<h3 id="sec-13-4"><span class="section-number-3">13.4</span> Three G's /gold, glory, god</h3>
+</div>
+
+<div id="outline-container-sec-13-5" class="outline-3">
+<h3 id="sec-13-5"><span class="section-number-3">13.5</span> Hugano diaspera</h3>
+</div>
+
+<div id="outline-container-sec-13-6" class="outline-3">
+<h3 id="sec-13-6"><span class="section-number-3">13.6</span> Bartram trail</h3>
+</div>
+
+
+<div id="outline-container-sec-13-7" class="outline-3">
+<h3 id="sec-13-7"><span class="section-number-3">13.7</span> Charles Darwin</h3>
+<div class="outline-text-3" id="text-13-7">
+<ul class="org-ul">
+<li>Makes ton of money going on vaoyages
+</li>
+
+<li>Beagles, first taskes with making maps and charts
+
+<ul class="org-ul">
+<li>First captaon of Bealge dies, he had mental issues. Rumor, is that captain became so bored, that he shoots himself
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2018-02-27 Tue&gt;</span></span></p>
+<p class="author">Author: Tommy Lane</p>
+<p class="date">Created: 2018-03-15 Thu 13:35</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
