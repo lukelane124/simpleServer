@@ -16,19 +16,23 @@
 #include "server.h"
 
 const char webpage[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>%s</title></head><body>%s</body></html>\r\n\r\n\0";
+"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>%s</title></head><body>%s</body></html>\r\n\r\n\0";
 const char timepage[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>Default</title></head><body><h1>This is the default file for Tommy's Server 0.0.1</h1><br><h2>%s</h2></body></html>\r\n\r\n\0";
+"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>Default</title></head><body><h1>This is the default file for Tommy's Server 0.0.1</h1><br><h2>%s</h2></body></html>\r\n\r\n\0";
 const char fofPage[] =
-"HTTP/1.1 404 Not Found\r\nConnection: close\r\nContent-Type: text/html; charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>404 Not Found</title></head><body><h1>Error 404</h1><br>File not found. Closing connection</body></html>\r\n\r\n\0";
+"HTTP/1.1 404 Not Found\r\nConnection: close\r\nContent-Type: text/html charset=UTF-8\r\n\r\n<!DOCTYPE html>\r\n<html><head><title>404 Not Found</title></head><body><h1>Error 404</h1><br>File not found. Closing connection</body></html>\r\n\r\n\0";
 const char htmlHeader[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html; \r\n\r\n";
+"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/html \r\n\r\n";
 const char pngHeader[] =
 "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: image/png\r\nContent-Length: %i\r\n\r\n";
 const char textHeader[] =
-"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text; \r\n\r\n";
-extern int clisock;
+"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: text/text \r\n\r\n";
+const char binaryHeader[]=
+"HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Type: application/octet-stream \r\n\r\n";
 
+char formatHeader[MAX_BUFFER_SIZE];
+
+extern int clisock;
 int extensionHash(char* str) {
   if (strncmp(str, ".html", 5) == 0){
     printf("HTML_FILE\n");
@@ -103,15 +107,19 @@ whileloop:
         switch(extensionHash(extension)) 
         {
           case PNG_FILE:{
-              write(clisock, pngHeader, sizeof(pngHeader)-1);
+            sprintf(formatHeader, pngHeader, st.st_size-1);
+              write(clisock, formatHeader, strlen(formatHeader));
 
             //bool sendFileOverSocket(int fd, FILE* socket, char* formatHeader) {
             printf("PNG file requested\n");
-            sendFileOverSocket(requestedFD, clisock, pngHeader);
+            //sendFileOverSocket(requestedFD, clisock, pngHeader);
             
             break;
           }
-          default:{}
+          default:
+          {
+
+          }
         }
       } 
       else 

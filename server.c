@@ -20,7 +20,7 @@
 
 
 #define PORT 5555
-#define MAX_BUFFER_SIZE 1024
+
 const char webroot[] =
 "./files/";
 
@@ -83,6 +83,7 @@ int8_t detrmineRESTtype(client_request_t cliReq)
 				default:
 					ret=-1;
 			}
+      break;
 		case 'D':
 			ret=DELETE;
 			break;
@@ -134,20 +135,26 @@ void* connectHandler(void* args) {
     switch(detrmineRESTtype(cliRequest))
     {
     	case GET:
+        printf("GETRequest\n");
     		handlerGETRequest(cliRequest);
 			break;
 
-		case POST:
-			handlerPOSTRequest(cliRequest);
-			break;
+  		case POST:
+        printf("POSTRequest\n");
+  			handlerPOSTRequest(cliRequest);
+  			break;
 
-		case PUT:
-			handlerPUTRequest(cliRequest);
-			break;
+  		case PUT:
+        printf("PUTRequest\n");
+  			handlerPUTRequest(cliRequest);
+  			break;
 
-		case DELETE:
-			handlerDELETERequest(cliRequest);
-			break;
+  		case DELETE:
+        printf("DELETERequest\n");
+  			handlerDELETERequest(cliRequest);
+  			break;
+      default:
+        printf("Error in rest type determination...\n");
   }
   //Cleanup memory, close socket, throw out thread's context.
   free(r_msg);
