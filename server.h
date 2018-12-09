@@ -1,6 +1,6 @@
 #ifndef _SERVER_H
 #define _SERVER_H
-
+#define MAX_BUFFER_SIZE 1024
 typedef enum supported_f_s
 {
   HTML_FILE,
