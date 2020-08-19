@@ -21,7 +21,7 @@ clean:
 	rm -f $(objects)
 
 run: all
-	./server.exe 10000
+	./server 10000
 
 depend:
 	touch make.depend

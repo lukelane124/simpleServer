@@ -23,4 +23,5 @@ void handlerGETRequest(client_request_t cliReq);
 void handlerPOSTRequest(client_request_t cliReq);
 void handlerPUTRequest(client_request_t cliReq);
 void handlerDELETERequest(client_request_t cliReq);
+size_t mysendfile(int socket, int file, size_t offset, size_t size);
 #endif

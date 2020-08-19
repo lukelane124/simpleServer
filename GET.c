@@ -129,7 +129,8 @@ whileloop:
 
       long unsigned int accum = 0;
       while (accum < st.st_size) {
-        accum += sendfile(clisock, requestedFD, 0, st.st_size);
+        //size_t mysendfile(int socket, int file, size_t offset, size_t size)
+        accum += mysendfile(clisock, requestedFD, 0, st.st_size);
         printf("Writing with Acum Value: %li\n", accum);
       }
       char name[60]={0};

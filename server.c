@@ -33,6 +33,26 @@ typedef enum rest_e
 	DELETE,
 } rest_t;
 
+//accum += sendfile(clisock, requestedFD, 0, st.st_size);
+size_t mysendfile(int socket, int file, size_t offset, size_t size)
+{
+  size_t ret = 0;
+  char* buffer = calloc(size, sizeof(char));
+
+  ret = lseek(file, SEEK_SET, offset);
+  if (ret >= 0)
+  {
+    memset((void*) buffer, 0, size);
+    ret = read(file, (void*) buffer, size);
+    if (ret >= 0)
+    {
+      ret = write(socket, (void*) buffer, ret);
+    }
+  }
+  return ret;
+}
+
+
 bool sendFileOverSocket(int fd, int socket, const char* formatHeader) {
   struct stat st;
   fstat(fd, &st);
@@ -45,7 +65,7 @@ bool sendFileOverSocket(int fd, int socket, const char* formatHeader) {
   //write(fd, responseHeader, strlen(responseHeader) - 1);
   for(;;)
   {
-  	sentBytes = sendfile(socket, fd, &offset, remainData);
+  	sentBytes = mysendfile(socket, fd, offset, remainData);
   	remainData -= sentBytes;
   	printf("Server sent %d bytes from the file, offset now: %d, and %d remains to be send.\n", sentBytes, offset, remainData);
   	if (sentBytes <= 0 || remainData <= 0)
